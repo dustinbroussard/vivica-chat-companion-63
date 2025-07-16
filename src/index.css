@@ -53,8 +53,32 @@
     --warning: 60 100% 50%;
     --danger: 0 100% 50%;
     --info: 180 100% 50%;
+    --theme-primary: 271 91% 65%;
+    --theme-accent: 270 95% 75%;
+    --user-bubble-bg: hsl(var(--bg-primary));
+    --user-bubble-text: hsl(var(--text-primary));
+    --user-bubble-border: 1px solid hsl(var(--accent-primary));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--bg-primary)) 0%, hsl(var(--bg-hover)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--theme-primary)) 0%, hsl(var(--theme-accent)) 100%);
+    --modal-bg: hsl(var(--bg-secondary));
+    --modal-radius: 16px;
+    --modal-mobile-radius: 0;
   }
 }
+
+/* Color Themes */
+.theme-default {
+  --theme-primary: 271 91% 65%;
+  --theme-accent: 270 95% 75%;
+  --user-bubble-bg: hsl(var(--bg-primary));
+  --user-bubble-text: hsl(var(--text-primary));
+  --user-bubble-border: 1px solid hsl(var(--accent-primary));
+}
+
+.theme-blue { --theme-primary: 211 100% 50%; --theme-accent: 211 100% 60%; }
+.theme-red { --theme-primary: 348 100% 38%; --theme-accent: 348 84% 55%; }
+.theme-green { --theme-primary: 151 100% 40%; --theme-accent: 151 100% 45%; }
+.theme-purple { --theme-primary: 294 100% 50%; --theme-accent: 294 100% 60%; }
 
 /* DEFAULT DARK THEME */
 [data-theme="default-dark"],
@@ -67,8 +91,8 @@
   --text-primary: 0 0% 100%;
   --text-secondary: 0 0% 80%;
   --text-muted: 0 0% 53%;
-  --accent-primary: 271 91% 65%;
-  --accent-secondary: 270 95% 75%;
+  --accent-primary: var(--theme-primary);
+  --accent-secondary: var(--theme-accent);
   --border-custom: 0 0% 20%;
   --border-light: 0 0% 17%;
 }
@@ -84,8 +108,8 @@
   --text-primary: 0 0% 0%;
   --text-secondary: 0 0% 20%;
   --text-muted: 0 0% 40%;
-  --accent-primary: 0 0% 0%;
-  --accent-secondary: 0 0% 10%;
+  --accent-primary: var(--theme-primary);
+  --accent-secondary: var(--theme-accent);
   --border-custom: 0 0% 80%;
   --border-light: 0 0% 81%;
 }
@@ -100,8 +124,8 @@
   --text-primary: 208 100% 97%;
   --text-secondary: 220 25% 70%;
   --text-muted: 220 20% 63%;
-  --accent-primary: 211 100% 50%;
-  --accent-secondary: 211 100% 60%;
+  --accent-primary: var(--theme-primary);
+  --accent-secondary: var(--theme-accent);
   --border-custom: 220 39% 31%;
   --border-light: 220 39% 38%;
 }
@@ -116,8 +140,8 @@
   --text-primary: 220 100% 5.5%;
   --text-secondary: 220 100% 24%;
   --text-muted: 220 14% 42%;
-  --accent-primary: 211 100% 50%;
-  --accent-secondary: 211 100% 35%;
+  --accent-primary: var(--theme-primary);
+  --accent-secondary: var(--theme-accent);
   --border-custom: 220 13% 69%;
   --border-light: 210 40% 83%;
 }
@@ -132,8 +156,8 @@
   --text-primary: 343 100% 98%;
   --text-secondary: 343 23% 69%;
   --text-muted: 343 23% 53%;
-  --accent-primary: 348 100% 38%;
-  --accent-secondary: 348 84% 55%;
+  --accent-primary: var(--theme-primary);
+  --accent-secondary: var(--theme-accent);
   --border-custom: 348 100% 31%;
   --border-light: 343 23% 69%;
 }
@@ -148,8 +172,8 @@
   --text-primary: 348 100% 2%;
   --text-secondary: 348 100% 18%;
   --text-muted: 348 100% 31%;
-  --accent-primary: 348 100% 38%;
-  --accent-secondary: 348 100% 31%;
+  --accent-primary: var(--theme-primary);
+  --accent-secondary: var(--theme-accent);
   --border-custom: 343 23% 69%;
   --border-light: 343 30% 86%;
 }
@@ -164,8 +188,8 @@
   --text-primary: 151 100% 90%;
   --text-secondary: 151 100% 70%;
   --text-muted: 151 100% 50%;
-  --accent-primary: 151 100% 40%;
-  --accent-secondary: 151 100% 45%;
+  --accent-primary: var(--theme-primary);
+  --accent-secondary: var(--theme-accent);
   --border-custom: 151 100% 25%;
   --border-light: 151 100% 35%;
 }
@@ -180,8 +204,8 @@
   --text-primary: 151 100% 6%;
   --text-secondary: 151 100% 15%;
   --text-muted: 151 100% 25%;
-  --accent-primary: 151 100% 40%;
-  --accent-secondary: 151 100% 29%;
+  --accent-primary: var(--theme-primary);
+  --accent-secondary: var(--theme-accent);
   --border-custom: 151 40% 60%;
   --border-light: 151 60% 80%;
 }
@@ -196,8 +220,8 @@
   --text-primary: 294 100% 95%;
   --text-secondary: 294 100% 81%;
   --text-muted: 294 100% 70%;
-  --accent-primary: 294 100% 50%;
-  --accent-secondary: 294 100% 60%;
+  --accent-primary: var(--theme-primary);
+  --accent-secondary: var(--theme-accent);
   --border-custom: 294 100% 35%;
   --border-light: 294 100% 65%;
 }
@@ -212,8 +236,8 @@
   --text-primary: 294 100% 8%;
   --text-secondary: 294 100% 21%;
   --text-muted: 294 100% 35%;
-  --accent-primary: 294 100% 50%;
-  --accent-secondary: 294 100% 31%;
+  --accent-primary: var(--theme-primary);
+  --accent-secondary: var(--theme-accent);
   --border-custom: 294 100% 70%;
   --border-light: 294 100% 84%;
 }
@@ -381,10 +405,11 @@
 }
 
 .message-bubble.user {
-  background: hsl(var(--accent-primary) / 0.9);
-  color: hsl(var(--text-primary));
+  background: var(--user-bubble-bg);
+  color: var(--user-bubble-text);
   margin-left: auto;
   border-bottom-right-radius: 6px;
+  border: var(--user-bubble-border);
 }
 
 .message-bubble.assistant {

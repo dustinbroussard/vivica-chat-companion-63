@@ -110,9 +110,11 @@ const Index = () => {
     const savedCurrent = localStorage.getItem('vivica-current-conversation');
     
     if (saved) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const parsedConversations = JSON.parse(saved).map((conv: any) => ({
         ...conv,
         timestamp: new Date(conv.timestamp),
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         messages: conv.messages.map((msg: any) => ({
           ...msg,
           timestamp: new Date(msg.timestamp)
@@ -278,7 +280,7 @@ const Index = () => {
       profileId: currentProfile.id,
     };
 
-    let streamingConversation = {
+    const streamingConversation = {
       ...updatedConversation,
       messages: [...updatedConversation.messages, assistantMessage],
       lastMessage: '',

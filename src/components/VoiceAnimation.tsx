@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 interface VoiceAnimationProps {
   isVisible: boolean;
   onClose: () => void;
-  currentProfile: any;
+  currentProfile: Record<string, unknown>;
   getMemoryPrompt: () => string;
   buildSystemPrompt: () => string;
 }

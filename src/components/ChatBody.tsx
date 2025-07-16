@@ -1,5 +1,7 @@
 
 import { forwardRef, useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { MessageSquare, Mail, Lightbulb, Brain, Code, RotateCcw, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -126,7 +128,12 @@ export const ChatBody = forwardRef<HTMLDivElement, ChatBodyProps>(
                   )}
                   
                   <div className={`message-bubble ${message.role} ${message.failed ? 'border-red-500/50 bg-red-500/10' : ''}`}>
-                    <div className="whitespace-pre-wrap break-words">{message.content}</div>
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      className="prose prose-invert break-words max-w-none"
+                    >
+                      {message.content}
+                    </ReactMarkdown>
                     
                     <div className="flex items-center justify-between mt-2">
                       <div className={`text-xs opacity-60 ${
