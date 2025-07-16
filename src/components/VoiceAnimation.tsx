@@ -13,21 +13,38 @@ interface VoiceAnimationProps {
 
 type VoiceState = 'idle' | 'listening' | 'processing' | 'speaking';
 
-export const VoiceAnimation = ({ 
-  isVisible, 
-  onClose, 
+export const VoiceAnimation = ({
+  isVisible,
+  onClose,
   currentProfile,
   getMemoryPrompt,
-  buildSystemPrompt 
+  buildSystemPrompt
 }: VoiceAnimationProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
   const [voiceState, setVoiceState] = useState<VoiceState>('listening');
   const [audioLevel, setAudioLevel] = useState(0.1);
+  const [unsupported, setUnsupported] = useState(false);
+
+  const supportsAudio = !!(
+    typeof navigator !== 'undefined' &&
+    navigator.mediaDevices?.getUserMedia &&
+    window.AudioContext
+  );
+  const reducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Detect audio support
+  useEffect(() => {
+    if (isVisible && !supportsAudio) {
+      setUnsupported(true);
+    }
+  }, [isVisible, supportsAudio]);
 
   // Simulate voice state changes for demo - much slower transitions
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || unsupported || reducedMotion) return;
 
     const stateSequence: VoiceState[] = ['listening', 'processing', 'speaking', 'idle'];
     let currentStateIndex = 0;
@@ -42,7 +59,7 @@ export const VoiceAnimation = ({
 
   // Simulate audio level changes - much more subtle
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || unsupported || reducedMotion) return;
 
     const interval = setInterval(() => {
       if (voiceState === 'speaking') {
@@ -60,7 +77,7 @@ export const VoiceAnimation = ({
   }, [isVisible, voiceState]);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || unsupported || reducedMotion) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -212,7 +229,7 @@ export const VoiceAnimation = ({
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isVisible, voiceState, audioLevel]);
+  }, [isVisible, voiceState, audioLevel, unsupported, reducedMotion]);
 
   const getStateLabel = (state: VoiceState) => {
     switch (state) {
@@ -245,6 +262,16 @@ export const VoiceAnimation = ({
   };
 
   if (!isVisible) return null;
+  if (unsupported) {
+    return (
+      <div className="voice-animation-container flex items-center justify-center text-center text-white">
+        <div>
+          <p className="mb-4 text-lg">Voice mode is not supported on this device.</p>
+          <Button onClick={onClose}>Close</Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="voice-animation-container">
@@ -262,21 +289,6 @@ export const VoiceAnimation = ({
       >
         <X className="w-6 h-6" />
       </Button>
-
-      {/* Profile and Memory Status */}
-      <div className="absolute top-4 left-4 text-white z-10">
-        <div className="bg-black/30 rounded-lg p-3 backdrop-blur-sm">
-          <div className="text-sm opacity-75">Profile</div>
-          <div className="font-medium">{currentProfile?.name || 'No Profile'}</div>
-          <div className="text-xs opacity-50 mt-1">
-            {currentProfile?.model || 'No model selected'}
-          </div>
-          {getMemoryPrompt() && (
-            <div className="text-xs text-green-300 mt-1">Memory Active</div>
-          )}
-        </div>
-      </div>
-
       {/* Vivica label */}
       <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 text-center">
         <h2 className="text-4xl font-bold text-white tracking-wide mb-2">
