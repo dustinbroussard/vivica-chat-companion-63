@@ -53,6 +53,9 @@ const Index = () => {
     initializeProfiles();
     loadConversations();
     loadCurrentProfile();
+    const handler = () => loadCurrentProfile();
+    window.addEventListener('profilesUpdated', handler);
+    return () => window.removeEventListener('profilesUpdated', handler);
   }, []);
 
   const initializeProfiles = () => {

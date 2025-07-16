@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, User, Plus, Edit, Trash2 } from "lucide-react";
 import {
   Dialog,
@@ -29,27 +29,43 @@ interface ProfilesModalProps {
 }
 
 export const ProfilesModal = ({ isOpen, onClose }: ProfilesModalProps) => {
-  const [profiles, setProfiles] = useState<Profile[]>([
-    {
-      id: '1',
-      name: 'Assistant',
-      model: 'openai/gpt-3.5-turbo',
-      systemPrompt: 'You are a helpful AI assistant.',
-      temperature: 0.7,
-      maxTokens: 2000,
-    },
-    {
-      id: '2',
-      name: 'Creative Writer',
-      model: 'openai/gpt-4',
-      systemPrompt: 'You are a creative writing assistant specializing in storytelling and creative content.',
-      temperature: 0.9,
-      maxTokens: 3000,
-    },
-  ]);
+  const [profiles, setProfiles] = useState<Profile[]>([]);
 
   const [editingProfile, setEditingProfile] = useState<Profile | null>(null);
   const [showForm, setShowForm] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('vivica-profiles');
+    if (saved) {
+      try {
+        setProfiles(JSON.parse(saved));
+      } catch (err) {
+        console.error('Failed to parse profiles', err);
+      }
+    } else {
+      const defaults: Profile[] = [
+        {
+          id: '1',
+          name: 'Assistant',
+          model: 'openai/gpt-3.5-turbo',
+          systemPrompt: 'You are a helpful AI assistant.',
+          temperature: 0.7,
+          maxTokens: 2000,
+        },
+        {
+          id: '2',
+          name: 'Creative Writer',
+          model: 'openai/gpt-4',
+          systemPrompt:
+            'You are a creative writing assistant specializing in storytelling and creative content.',
+          temperature: 0.9,
+          maxTokens: 3000,
+        },
+      ];
+      setProfiles(defaults);
+      localStorage.setItem('vivica-profiles', JSON.stringify(defaults));
+    }
+  }, []);
 
   const handleCreateProfile = () => {
     const newProfile: Profile = {
@@ -69,14 +85,24 @@ export const ProfilesModal = ({ isOpen, onClose }: ProfilesModalProps) => {
     setShowForm(true);
   };
 
+  const persistProfiles = (list: Profile[]) => {
+    setProfiles(list);
+    localStorage.setItem('vivica-profiles', JSON.stringify(list));
+    window.dispatchEvent(new Event('profilesUpdated'));
+  };
+
   const handleSaveProfile = () => {
     if (!editingProfile) return;
 
     if (profiles.find(p => p.id === editingProfile.id)) {
-      setProfiles(prev => prev.map(p => p.id === editingProfile.id ? editingProfile : p));
+      const updated = profiles.map(p =>
+        p.id === editingProfile.id ? editingProfile : p
+      );
+      persistProfiles(updated);
       toast.success("Profile updated successfully!");
     } else {
-      setProfiles(prev => [...prev, editingProfile]);
+      const updated = [...profiles, editingProfile];
+      persistProfiles(updated);
       toast.success("Profile created successfully!");
     }
 
@@ -86,7 +112,18 @@ export const ProfilesModal = ({ isOpen, onClose }: ProfilesModalProps) => {
 
   const handleDeleteProfile = (id: string) => {
     if (confirm("Are you sure you want to delete this profile?")) {
-      setProfiles(prev => prev.filter(p => p.id !== id));
+      const updated = profiles.filter(p => p.id !== id);
+      persistProfiles(updated);
+
+      const current = localStorage.getItem('vivica-current-profile');
+      if (current === id) {
+        if (updated.length > 0) {
+          localStorage.setItem('vivica-current-profile', updated[0].id);
+        } else {
+          localStorage.removeItem('vivica-current-profile');
+        }
+      }
+
       toast.success("Profile deleted successfully!");
     }
   };
