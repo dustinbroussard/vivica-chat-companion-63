@@ -64,6 +64,10 @@
     --modal-radius: 16px;
     --modal-mobile-radius: 0;
   }
+
+  button, [role="button"], input[type="button"], input[type="submit"] {
+    touch-action: manipulation;
+  }
 }
 
 /* Color Themes */
@@ -260,12 +264,14 @@
   html {
     height: 100vh;
     height: 100dvh;
+    overscroll-behavior: contain;
   }
 
   body, #root {
     height: 100vh;
     height: 100dvh;
     overflow: hidden;
+    overscroll-behavior: contain;
   }
 }
 
