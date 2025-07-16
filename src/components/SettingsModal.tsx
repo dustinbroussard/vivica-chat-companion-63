@@ -14,6 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import { ThemeSelector } from "./ThemeSelector";
+import { ApiKeyInput } from "./ApiKeyInput";
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -75,6 +76,8 @@ export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
         </DialogHeader>
 
         <div className="space-y-6 py-4">
+          <ApiKeyInput onApiKeyChange={() => {}} />
+
           {/* API Keys Section */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">

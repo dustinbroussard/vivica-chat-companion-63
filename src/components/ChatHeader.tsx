@@ -1,7 +1,8 @@
 
-import { Menu } from "lucide-react";
+import { Menu, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProfileSwitcher } from "./ProfileSwitcher";
+import { useTheme } from "@/hooks/useTheme";
 
 interface Profile {
   id: string;
@@ -20,13 +21,20 @@ interface ChatHeaderProps {
   onOpenProfiles: () => void;
 }
 
-export const ChatHeader = ({ 
-  onMenuToggle, 
-  currentTitle, 
-  currentProfile, 
-  onProfileChange, 
-  onOpenProfiles 
+export const ChatHeader = ({
+  onMenuToggle,
+  currentTitle,
+  currentProfile,
+  onProfileChange,
+  onOpenProfiles
 }: ChatHeaderProps) => {
+  const { theme, updateTheme } = useTheme();
+
+  const toggleVariant = () => {
+    updateTheme({ ...theme, variant: theme.variant === 'dark' ? 'light' : 'dark' });
+  };
+
+  const logoSrc = `/logo-${theme.color}${theme.variant}.png`;
   return (
     <div className="flex items-center justify-between p-4 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
       <div className="flex items-center gap-3">
@@ -38,7 +46,9 @@ export const ChatHeader = ({
         >
           <Menu className="w-5 h-5" />
         </Button>
-        
+
+        <img src={logoSrc} alt="Vivica" className="h-8 w-8" />
+
         <div className="flex items-center gap-2">
           <h1 className="text-lg font-semibold">{currentTitle}</h1>
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -46,6 +56,10 @@ export const ChatHeader = ({
       </div>
 
       <div className="flex items-center gap-3">
+        <Button variant="ghost" size="icon" onClick={toggleVariant}>
+          {theme.variant === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+        </Button>
+
         <ProfileSwitcher
           currentProfile={currentProfile}
           onProfileChange={onProfileChange}

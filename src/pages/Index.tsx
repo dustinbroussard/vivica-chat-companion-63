@@ -8,6 +8,7 @@ import { SettingsModal } from "@/components/SettingsModal";
 import { ProfilesModal } from "@/components/ProfilesModal";
 import { MemoryModal } from "@/components/MemoryModal";
 import { toast } from "sonner";
+import { ChatService, ChatMessage } from "@/services/chatService";
 
 interface Message {
   id: string;
@@ -254,57 +255,76 @@ const Index = () => {
 
     setIsTyping(true);
 
-    setTimeout(() => {
-      chatBodyRef.current?.scrollTo({
-        top: chatBodyRef.current.scrollHeight,
-        behavior: 'smooth'
-      });
-    }, 100);
+    const apiKey = localStorage.getItem('openrouter-api-key');
+    if (!apiKey) {
+      toast.error('Please set your OpenRouter API key in Settings.');
+      setIsTyping(false);
+      return;
+    }
+
+    const systemPrompt = buildSystemPrompt();
+    const chatMessages: ChatMessage[] = [
+      { role: 'system', content: systemPrompt },
+      ...updatedConversation.messages.map(m => ({ role: m.role, content: m.content }))
+    ];
+
+    const chatService = new ChatService(apiKey);
+
+    const assistantMessage: Message = {
+      id: (Date.now() + 1).toString(),
+      content: '',
+      role: 'assistant',
+      timestamp: new Date(),
+      profileId: currentProfile.id,
+    };
+
+    let streamingConversation = {
+      ...updatedConversation,
+      messages: [...updatedConversation.messages, assistantMessage],
+      lastMessage: '',
+      timestamp: new Date(),
+    };
+
+    setCurrentConversation(streamingConversation);
+    setConversations(prev => prev.map(conv =>
+      conv.id === currentConversation.id ? streamingConversation : conv
+    ));
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500 + Math.random() * 1000));
-      
-      if (Math.random() < 0.1) {
-        throw new Error('API request failed');
-      }
+      const response = await chatService.sendMessage({
+        model: currentProfile.model,
+        messages: chatMessages,
+        temperature: currentProfile.temperature,
+        max_tokens: currentProfile.maxTokens,
+        stream: true,
+      });
 
-      const systemPrompt = buildSystemPrompt();
-      const aiMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        content: `I understand you said: "${content}". This is a demo response from ${currentProfile.name}. 
+      let fullContent = '';
+      for await (const token of chatService.streamResponse(response)) {
+        fullContent += token;
+        setCurrentConversation(prev => {
+          if (!prev) return prev;
+          const msgs = prev.messages.map(msg =>
+            msg.id === assistantMessage.id ? { ...msg, content: fullContent } : msg
+          );
+          return { ...prev, messages: msgs, lastMessage: fullContent };
+        });
+        setConversations(prev => prev.map(conv => {
+          if (conv.id !== currentConversation.id) return conv;
+          const msgs = conv.messages.map(msg =>
+            msg.id === assistantMessage.id ? { ...msg, content: fullContent } : msg
+          );
+          return { ...conv, messages: msgs, lastMessage: fullContent, timestamp: new Date() };
+        }));
 
-System Prompt: ${systemPrompt}
-Model: ${currentProfile.model}
-Temperature: ${currentProfile.temperature}
-
-In a real implementation, this would connect to an AI service using these profile settings to provide intelligent responses.`,
-        role: 'assistant',
-        timestamp: new Date(),
-        profileId: currentProfile.id,
-      };
-
-      const finalConversation = {
-        ...updatedConversation,
-        messages: [...updatedConversation.messages, aiMessage],
-        lastMessage: aiMessage.content,
-        timestamp: new Date(),
-      };
-
-      setCurrentConversation(finalConversation);
-      setConversations(prev => prev.map(conv => 
-        conv.id === currentConversation.id ? finalConversation : conv
-      ));
-      
-      setTimeout(() => {
         chatBodyRef.current?.scrollTo({
           top: chatBodyRef.current.scrollHeight,
           behavior: 'smooth'
         });
-      }, 100);
-      
+      }
     } catch (error) {
       const failedMessage: Message = {
-        id: (Date.now() + 1).toString(),
+        id: assistantMessage.id,
         content: 'Sorry, I encountered an error. Please try again.',
         role: 'assistant',
         timestamp: new Date(),
@@ -320,11 +340,11 @@ In a real implementation, this would connect to an AI service using these profil
       };
 
       setCurrentConversation(errorConversation);
-      setConversations(prev => prev.map(conv => 
+      setConversations(prev => prev.map(conv =>
         conv.id === currentConversation.id ? errorConversation : conv
       ));
-      
-      toast.error("Failed to get AI response. Please try again.");
+
+      toast.error('Failed to get AI response. Please try again.');
     } finally {
       setIsTyping(false);
     }
