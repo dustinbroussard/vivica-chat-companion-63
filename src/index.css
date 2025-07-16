@@ -1,0 +1,421 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 85% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 85% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 0 85% 60%;
+    --radius: 1rem;
+    --sidebar-background: 0 0% 3%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 85% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 85% 60%;
+
+    /* Custom AMOLED Theme Variables */
+    --bg-primary: 0 0% 0%;
+    --bg-secondary: 0 0% 4%;
+    --bg-tertiary: 0 0% 7%;
+    --bg-hover: 0 0% 10%;
+    --bg-active: 0 0% 13%;
+    --text-primary: 0 0% 100%;
+    --text-secondary: 0 0% 80%;
+    --text-muted: 0 0% 53%;
+    --accent-primary: 271 91% 65%;
+    --accent-secondary: 270 95% 75%;
+    --border-custom: 0 0% 20%;
+    --border-light: 0 0% 17%;
+    --shadow: 0 0% 100% / 0.1;
+    --shadow-heavy: 0 0% 100% / 0.2;
+    --success: 120 100% 50%;
+    --warning: 60 100% 50%;
+    --danger: 0 100% 50%;
+    --info: 180 100% 50%;
+  }
+}
+
+/* DEFAULT DARK THEME */
+[data-theme="default-dark"],
+.dark-mode {
+  --bg-primary: 0 0% 0%;
+  --bg-secondary: 0 0% 4%;
+  --bg-tertiary: 0 0% 7%;
+  --bg-hover: 0 0% 10%;
+  --bg-active: 0 0% 13%;
+  --text-primary: 0 0% 100%;
+  --text-secondary: 0 0% 80%;
+  --text-muted: 0 0% 53%;
+  --accent-primary: 271 91% 65%;
+  --accent-secondary: 270 95% 75%;
+  --border-custom: 0 0% 20%;
+  --border-light: 0 0% 17%;
+}
+
+/* DEFAULT LIGHT THEME */
+[data-theme="default-light"],
+.light-mode {
+  --bg-primary: 0 0% 100%;
+  --bg-secondary: 0 0% 96%;
+  --bg-tertiary: 0 0% 88%;
+  --bg-hover: 0 0% 81%;
+  --bg-active: 0 0% 75%;
+  --text-primary: 0 0% 0%;
+  --text-secondary: 0 0% 20%;
+  --text-muted: 0 0% 40%;
+  --accent-primary: 0 0% 0%;
+  --accent-secondary: 0 0% 10%;
+  --border-custom: 0 0% 80%;
+  --border-light: 0 0% 81%;
+}
+
+/* BLUE DARK THEME */
+[data-theme="blue-dark"] {
+  --bg-primary: 220 100% 5.5%;
+  --bg-secondary: 220 100% 11%;
+  --bg-tertiary: 220 100% 24%;
+  --bg-hover: 220 100% 28%;
+  --bg-active: 220 100% 31%;
+  --text-primary: 208 100% 97%;
+  --text-secondary: 220 25% 70%;
+  --text-muted: 220 20% 63%;
+  --accent-primary: 211 100% 50%;
+  --accent-secondary: 211 100% 60%;
+  --border-custom: 220 39% 31%;
+  --border-light: 220 39% 38%;
+}
+
+/* BLUE LIGHT THEME */
+[data-theme="blue-light"] {
+  --bg-primary: 208 100% 97%;
+  --bg-secondary: 210 40% 93%;
+  --bg-tertiary: 214 32% 81%;
+  --bg-hover: 214 27% 84%;
+  --bg-active: 210 29% 72%;
+  --text-primary: 220 100% 5.5%;
+  --text-secondary: 220 100% 24%;
+  --text-muted: 220 14% 42%;
+  --accent-primary: 211 100% 50%;
+  --accent-secondary: 211 100% 35%;
+  --border-custom: 220 13% 69%;
+  --border-light: 210 40% 83%;
+}
+
+/* RED DARK THEME */
+[data-theme="red-dark"] {
+  --bg-primary: 348 100% 2%;
+  --bg-secondary: 348 100% 5%;
+  --bg-tertiary: 348 100% 18%;
+  --bg-hover: 348 100% 24%;
+  --bg-active: 348 100% 31%;
+  --text-primary: 343 100% 98%;
+  --text-secondary: 343 23% 69%;
+  --text-muted: 343 23% 53%;
+  --accent-primary: 348 100% 38%;
+  --accent-secondary: 348 84% 55%;
+  --border-custom: 348 100% 31%;
+  --border-light: 343 23% 69%;
+}
+
+/* RED LIGHT THEME */
+[data-theme="red-light"] {
+  --bg-primary: 343 100% 98%;
+  --bg-secondary: 343 35% 91%;
+  --bg-tertiary: 0 100% 92%;
+  --bg-hover: 0 100% 88%;
+  --bg-active: 0 100% 83%;
+  --text-primary: 348 100% 2%;
+  --text-secondary: 348 100% 18%;
+  --text-muted: 348 100% 31%;
+  --accent-primary: 348 100% 38%;
+  --accent-secondary: 348 100% 31%;
+  --border-custom: 343 23% 69%;
+  --border-light: 343 30% 86%;
+}
+
+/* GREEN DARK THEME */
+[data-theme="green-dark"] {
+  --bg-primary: 151 100% 6%;
+  --bg-secondary: 151 100% 10%;
+  --bg-tertiary: 151 100% 15%;
+  --bg-hover: 151 100% 20%;
+  --bg-active: 151 100% 25%;
+  --text-primary: 151 100% 90%;
+  --text-secondary: 151 100% 70%;
+  --text-muted: 151 100% 50%;
+  --accent-primary: 151 100% 40%;
+  --accent-secondary: 151 100% 45%;
+  --border-custom: 151 100% 25%;
+  --border-light: 151 100% 35%;
+}
+
+/* GREEN LIGHT THEME */
+[data-theme="green-light"] {
+  --bg-primary: 151 100% 90%;
+  --bg-secondary: 151 100% 80%;
+  --bg-tertiary: 151 100% 70%;
+  --bg-hover: 151 100% 85%;
+  --bg-active: 151 100% 67%;
+  --text-primary: 151 100% 6%;
+  --text-secondary: 151 100% 15%;
+  --text-muted: 151 100% 25%;
+  --accent-primary: 151 100% 40%;
+  --accent-secondary: 151 100% 29%;
+  --border-custom: 151 40% 60%;
+  --border-light: 151 60% 80%;
+}
+
+/* PURPLE DARK THEME */
+[data-theme="purple-dark"] {
+  --bg-primary: 294 100% 8%;
+  --bg-secondary: 294 100% 12%;
+  --bg-tertiary: 294 100% 21%;
+  --bg-hover: 294 100% 27%;
+  --bg-active: 294 100% 35%;
+  --text-primary: 294 100% 95%;
+  --text-secondary: 294 100% 81%;
+  --text-muted: 294 100% 70%;
+  --accent-primary: 294 100% 50%;
+  --accent-secondary: 294 100% 60%;
+  --border-custom: 294 100% 35%;
+  --border-light: 294 100% 65%;
+}
+
+/* PURPLE LIGHT THEME */
+[data-theme="purple-light"] {
+  --bg-primary: 294 100% 95%;
+  --bg-secondary: 294 100% 89%;
+  --bg-tertiary: 294 100% 81%;
+  --bg-hover: 294 100% 86%;
+  --bg-active: 294 100% 75%;
+  --text-primary: 294 100% 8%;
+  --text-secondary: 294 100% 21%;
+  --text-muted: 294 100% 35%;
+  --accent-primary: 294 100% 50%;
+  --accent-secondary: 294 100% 31%;
+  --border-custom: 294 100% 70%;
+  --border-light: 294 100% 84%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    background: hsl(var(--bg-primary));
+    color: hsl(var(--text-primary));
+  }
+
+  html {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  body, #root {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--bg-secondary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent-primary));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent-secondary));
+}
+
+/* PWA installation styles */
+.pwa-install-banner {
+  @apply fixed bottom-4 left-4 right-4 rounded-lg p-4 z-50;
+  @apply flex items-center justify-between shadow-lg;
+  background: hsl(var(--bg-secondary));
+  border: 1px solid hsl(var(--border-custom));
+}
+
+@media (min-width: 768px) {
+  .pwa-install-banner {
+    @apply left-auto right-4 w-80;
+  }
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0); 
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--accent-primary) / 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px hsl(var(--accent-primary) / 0.6);
+  }
+}
+
+/* Voice animation styles */
+.voice-animation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, hsl(var(--bg-primary)) 0%, hsl(var(--bg-secondary)) 80%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.voice-orb {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, hsl(var(--accent-primary) / 0.8) 0%, transparent 70%);
+  border: 2px solid hsl(var(--accent-primary) / 0.6);
+  animation: orbPulse 2s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.voice-orb::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  background: hsl(var(--accent-primary) / 0.4);
+  transform: translate(-50%, -50%);
+  animation: innerPulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes orbPulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 0 50px hsl(var(--accent-primary) / 0.4);
+  }
+  50% { 
+    transform: scale(1.1);
+    box-shadow: 0 0 80px hsl(var(--accent-primary) / 0.6);
+  }
+}
+
+@keyframes innerPulse {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.8; }
+}
+
+/* Message bubble styles */
+.message-bubble {
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  margin: 8px 0;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.message-bubble.user {
+  background: hsl(var(--accent-primary) / 0.9);
+  color: hsl(var(--text-primary));
+  margin-left: auto;
+  border-bottom-right-radius: 6px;
+}
+
+.message-bubble.assistant {
+  background: hsl(var(--bg-secondary));
+  color: hsl(var(--text-primary));
+  margin-right: auto;
+  border-bottom-left-radius: 6px;
+  border: 1px solid hsl(var(--border-custom));
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px;
+  color: hsl(var(--text-muted));
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: hsl(var(--accent-primary));
+  animation: typingDot 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingDot {
+  0%, 60%, 100% { opacity: 0.3; }
+  30% { opacity: 1; }
+}
