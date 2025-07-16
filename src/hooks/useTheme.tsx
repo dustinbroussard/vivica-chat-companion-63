@@ -36,17 +36,19 @@ export const useTheme = () => {
 
   const applyTheme = (newTheme: Theme) => {
     const { color, variant } = newTheme;
-    
+
     // Remove all existing theme classes and attributes
     document.body.classList.remove(
       'dark-mode', 'light-mode'
     );
     document.documentElement.removeAttribute('data-theme');
-    
+    document.documentElement.classList.remove('theme-default','theme-blue','theme-red','theme-green','theme-purple');
+
     // Apply new theme
     const themeAttribute = `${color}-${variant}`;
     document.documentElement.setAttribute('data-theme', themeAttribute);
-    
+    document.documentElement.classList.add(`theme-${color}`);
+
     // Also add body class for backward compatibility
     document.body.classList.add(`${variant}-mode`);
     
