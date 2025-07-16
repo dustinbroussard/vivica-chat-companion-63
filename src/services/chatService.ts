@@ -21,7 +21,12 @@ export class ChatService {
   }
 
   async sendMessage(request: ChatRequest): Promise<Response> {
-    const response = await fetch(`${this.apiUrl}/chat/completions`, {
+    console.log('Sending request to OpenRouter:', {
+      url: `${this.baseUrl}/chat/completions`,
+      request: request
+    });
+
+    const response = await fetch(`${this.baseUrl}/chat/completions`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${this.apiKey}`,
@@ -30,13 +35,17 @@ export class ChatService {
         'X-Title': 'Vivica Chat Companion'
       },
       body: JSON.stringify({
-        ...request,
-        stream: true // Always use streaming
+        model: request.model,
+        messages: request.messages,
+        temperature: request.temperature || 0.7,
+        max_tokens: request.max_tokens || 4000,
+        stream: request.stream !== false // Default to true unless explicitly false
       })
     });
 
     if (!response.ok) {
       const error = await response.text();
+      console.error('OpenRouter API error:', error);
       throw new Error(`OpenRouter API error: ${error}`);
     }
 
@@ -82,9 +91,5 @@ export class ChatService {
     } finally {
       reader.releaseLock();
     }
-  }
-
-  private get apiUrl() {
-    return this.baseUrl;
   }
 }
