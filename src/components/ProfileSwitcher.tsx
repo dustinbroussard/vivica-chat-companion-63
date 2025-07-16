@@ -32,11 +32,24 @@ export const ProfileSwitcher = ({
 }: ProfileSwitcherProps) => {
   const [profiles, setProfiles] = useState<Profile[]>([]);
 
-  useEffect(() => {
+  const loadProfiles = () => {
     const savedProfiles = localStorage.getItem('vivica-profiles');
     if (savedProfiles) {
-      setProfiles(JSON.parse(savedProfiles));
+      try {
+        setProfiles(JSON.parse(savedProfiles));
+      } catch {
+        setProfiles([]);
+      }
+    } else {
+      setProfiles([]);
     }
+  };
+
+  useEffect(() => {
+    loadProfiles();
+    const handler = () => loadProfiles();
+    window.addEventListener('profilesUpdated', handler);
+    return () => window.removeEventListener('profilesUpdated', handler);
   }, []);
 
   return (
