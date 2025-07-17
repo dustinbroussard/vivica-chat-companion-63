@@ -37,6 +37,8 @@ interface Profile {
 }
 
 const Index = () => {
+  console.log("Index component rendering...");
+  
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [currentConversation, setCurrentConversation] = useState<Conversation | null>(null);
@@ -51,6 +53,7 @@ const Index = () => {
 
   // Initialize default profiles and load data
   useEffect(() => {
+    console.log("Index component mounted, initializing...");
     initializeProfiles();
     loadConversations();
     loadCurrentProfile();
@@ -421,6 +424,13 @@ const Index = () => {
     
     toast.success("Conversation renamed");
   };
+
+  console.log("Index component state:", {
+    sidebarOpen,
+    currentConversation: currentConversation?.id,
+    currentProfile: currentProfile?.name,
+    conversations: conversations.length
+  });
 
   return (
     <div className="flex h-screen bg-background text-foreground overflow-hidden">

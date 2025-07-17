@@ -13,9 +13,12 @@ import InstallPrompt from "./components/InstallPrompt";
 const queryClient = new QueryClient();
 
 const App = () => {
+  console.log("App component rendering...");
+  
   const { theme, applyTheme } = useTheme();
 
   useEffect(() => {
+    console.log("App mounted, applying theme:", theme);
     // Apply theme on app load
     applyTheme(theme);
   }, [theme, applyTheme]);
@@ -29,7 +32,6 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
