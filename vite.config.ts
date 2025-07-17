@@ -1,3 +1,4 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -11,7 +12,7 @@ const manifest = JSON.parse(
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/vivica-chat-companion-63/",
+  base: "./",
   server: {
     host: "::",
     port: 8080,
