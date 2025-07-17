@@ -50,6 +50,10 @@ This happens because the browser is trying to load the TypeScript entry file
 `npm run dev` or build the project using `npm run build` and serve the files
 from the generated `dist` directory to resolve the issue.
 
+### Deploying to GitHub Pages
+
+GitHub Pages only serves static files. Run `npm run build` to generate the `dist/` directory, then publish the contents of that folder (for example using a `gh-pages` branch). Opening `index.html` without building first will lead to the module MIME type error above.
+
 **Edit a file directly in GitHub**
 
 - Navigate to the desired file(s).
