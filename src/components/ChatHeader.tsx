@@ -23,7 +23,6 @@ interface ChatHeaderProps {
 
 export const ChatHeader = ({
   onMenuToggle,
-  currentTitle,
   currentProfile,
   onProfileChange,
   onOpenProfiles
@@ -49,8 +48,12 @@ export const ChatHeader = ({
 
         <img src={logoSrc} alt="Vivica" className="h-8 w-8" />
 
-        <div className="flex items-center gap-2">
-          <h1 className="text-lg font-semibold">{currentTitle}</h1>
+        <div className="flex items-center gap-3">
+          <ProfileSwitcher
+            currentProfile={currentProfile}
+            onProfileChange={onProfileChange}
+            onOpenProfiles={onOpenProfiles}
+          />
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
         </div>
       </div>
@@ -59,12 +62,6 @@ export const ChatHeader = ({
         <Button variant="ghost" size="icon" onClick={toggleVariant}>
           {theme.variant === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
         </Button>
-
-        <ProfileSwitcher
-          currentProfile={currentProfile}
-          onProfileChange={onProfileChange}
-          onOpenProfiles={onOpenProfiles}
-        />
       </div>
     </div>
   );
