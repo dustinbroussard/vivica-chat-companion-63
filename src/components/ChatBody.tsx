@@ -127,12 +127,11 @@ export const ChatBody = forwardRef<HTMLDivElement, ChatBodyProps>(
                   )}
                   
                   <div className={`message-bubble ${message.role} ${message.failed ? 'border-red-500/50 bg-red-500/10' : ''}`}>
-                    <ReactMarkdown
-                      remarkPlugins={[remarkGfm]}
-                      className="prose prose-invert break-words max-w-none"
-                    >
-                      {message.content}
-                    </ReactMarkdown>
+                    <div className="prose prose-invert break-words max-w-none">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {message.content}
+                      </ReactMarkdown>
+                    </div>
                     
                     <div className="flex items-center justify-between mt-2">
                       <div className={`text-xs opacity-60 ${

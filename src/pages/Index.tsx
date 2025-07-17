@@ -34,6 +34,7 @@ interface Profile {
   systemPrompt: string;
   temperature: number;
   maxTokens: number;
+  [key: string]: unknown; // Add index signature for console.log compatibility
 }
 
 const Index = () => {
