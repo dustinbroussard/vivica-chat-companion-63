@@ -11,28 +11,28 @@
     --card-foreground: 0 0% 100%;
     --popover: 0 0% 5%;
     --popover-foreground: 0 0% 100%;
-    --primary: 0 85% 60%;
+    --primary: 271 91% 65%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 100%;
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
-    --accent: 0 85% 60%;
+    --accent: 271 91% 65%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
+    --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 20%;
     --input: 0 0% 15%;
-    --ring: 0 85% 60%;
+    --ring: 271 91% 65%;
     --radius: 1rem;
     --sidebar-background: 0 0% 3%;
     --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 0 85% 60%;
+    --sidebar-primary: 271 91% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 10%;
     --sidebar-accent-foreground: 0 0% 90%;
     --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 0 85% 60%;
+    --sidebar-ring: 271 91% 65%;
 
     /* Base theme variables */
     --bg-primary: 0 0% 0%;
@@ -106,71 +106,71 @@
   --accent-secondary: 270 95% 75%;
 }
 
-/* DEFAULT DARK THEME - Purple monochromatic */
+/* DEFAULT DARK THEME - AMOLED black */
 [data-theme="default-dark"],
 .dark-mode {
-  --bg-primary: 271 100% 4%;
-  --bg-secondary: 271 100% 8%;
-  --bg-tertiary: 271 100% 12%;
-  --bg-hover: 271 100% 16%;
-  --bg-active: 271 100% 20%;
-  --text-primary: 271 50% 95%;
-  --text-secondary: 271 30% 80%;
-  --text-muted: 271 20% 60%;
-  --border-custom: 271 50% 25%;
-  --border-light: 271 40% 30%;
-  --background: 271 100% 4%;
-  --foreground: 271 50% 95%;
-  --card: 271 100% 8%;
-  --card-foreground: 271 50% 95%;
-  --popover: 271 100% 8%;
-  --popover-foreground: 271 50% 95%;
-  --muted: 271 100% 12%;
-  --muted-foreground: 271 20% 60%;
-  --border: 271 50% 25%;
-  --input: 271 100% 12%;
+  --bg-primary: 0 0% 0%;
+  --bg-secondary: 0 0% 4%;
+  --bg-tertiary: 0 0% 7%;
+  --bg-hover: 0 0% 10%;
+  --bg-active: 0 0% 13%;
+  --text-primary: 0 0% 100%;
+  --text-secondary: 0 0% 80%;
+  --text-muted: 0 0% 53%;
+  --border-custom: 0 0% 20%;
+  --border-light: 0 0% 16%;
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 5%;
+  --popover-foreground: 0 0% 100%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 65%;
+  --border: 0 0% 20%;
+  --input: 0 0% 15%;
   --primary: 271 91% 65%;
-  --primary-foreground: 271 50% 95%;
-  --secondary: 271 100% 16%;
-  --secondary-foreground: 271 50% 95%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 10%;
+  --secondary-foreground: 0 0% 100%;
   --accent: 271 91% 65%;
-  --accent-foreground: 271 50% 95%;
+  --accent-foreground: 0 0% 100%;
   /* Keep destructive red */
-  --destructive: 0 84% 60%;
+  --destructive: 0 100% 50%;
   --destructive-foreground: 0 0% 100%;
 }
 
-/* DEFAULT LIGHT THEME - Purple monochromatic */
+/* DEFAULT LIGHT THEME - White */
 [data-theme="default-light"],
 .light-mode {
-  --bg-primary: 271 50% 96%;
-  --bg-secondary: 271 40% 90%;
-  --bg-tertiary: 271 30% 84%;
-  --bg-hover: 271 25% 78%;
-  --bg-active: 271 20% 72%;
-  --text-primary: 271 100% 4%;
-  --text-secondary: 271 80% 20%;
-  --text-muted: 271 60% 40%;
-  --border-custom: 271 30% 70%;
-  --border-light: 271 20% 80%;
-  --background: 271 50% 96%;
-  --foreground: 271 100% 4%;
-  --card: 271 40% 90%;
-  --card-foreground: 271 100% 4%;
-  --popover: 271 40% 90%;
-  --popover-foreground: 271 100% 4%;
-  --muted: 271 30% 84%;
-  --muted-foreground: 271 60% 40%;
-  --border: 271 30% 70%;
-  --input: 271 30% 84%;
+  --bg-primary: 0 0% 100%;
+  --bg-secondary: 0 0% 96%;
+  --bg-tertiary: 0 0% 88%;
+  --bg-hover: 0 0% 82%;
+  --bg-active: 0 0% 75%;
+  --text-primary: 0 0% 0%;
+  --text-secondary: 0 0% 20%;
+  --text-muted: 0 0% 40%;
+  --border-custom: 0 0% 80%;
+  --border-light: 0 0% 82%;
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 96%;
+  --card-foreground: 0 0% 0%;
+  --popover: 0 0% 96%;
+  --popover-foreground: 0 0% 0%;
+  --muted: 0 0% 88%;
+  --muted-foreground: 0 0% 40%;
+  --border: 0 0% 80%;
+  --input: 0 0% 88%;
   --primary: 271 91% 35%;
-  --primary-foreground: 271 50% 96%;
-  --secondary: 271 25% 78%;
-  --secondary-foreground: 271 100% 4%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 82%;
+  --secondary-foreground: 0 0% 0%;
   --accent: 271 91% 35%;
-  --accent-foreground: 271 50% 96%;
+  --accent-foreground: 0 0% 100%;
   /* Keep destructive red */
-  --destructive: 0 84% 60%;
+  --destructive: 0 100% 50%;
   --destructive-foreground: 0 0% 100%;
 }
 
@@ -203,7 +203,7 @@
   --accent: 211 100% 50%;
   --accent-foreground: 211 50% 95%;
   /* Keep destructive red */
-  --destructive: 0 84% 60%;
+  --destructive: 0 100% 50%;
   --destructive-foreground: 0 0% 100%;
 }
 
@@ -236,7 +236,7 @@
   --accent: 211 100% 35%;
   --accent-foreground: 211 50% 96%;
   /* Keep destructive red */
-  --destructive: 0 84% 60%;
+  --destructive: 0 100% 50%;
   --destructive-foreground: 0 0% 100%;
 }
 
@@ -269,7 +269,7 @@
   --accent: 0 84% 55%;
   --accent-foreground: 0 50% 95%;
   /* Keep destructive red */
-  --destructive: 0 84% 60%;
+  --destructive: 0 100% 50%;
   --destructive-foreground: 0 0% 100%;
 }
 
@@ -302,7 +302,7 @@
   --accent: 0 84% 35%;
   --accent-foreground: 0 50% 96%;
   /* Keep destructive red */
-  --destructive: 0 84% 60%;
+  --destructive: 0 100% 50%;
   --destructive-foreground: 0 0% 100%;
 }
 
@@ -335,7 +335,7 @@
   --accent: 151 100% 40%;
   --accent-foreground: 151 50% 95%;
   /* Keep destructive red */
-  --destructive: 0 84% 60%;
+  --destructive: 0 100% 50%;
   --destructive-foreground: 0 0% 100%;
 }
 
@@ -368,7 +368,7 @@
   --accent: 151 100% 25%;
   --accent-foreground: 151 50% 96%;
   /* Keep destructive red */
-  --destructive: 0 84% 60%;
+  --destructive: 0 100% 50%;
   --destructive-foreground: 0 0% 100%;
 }
 
@@ -401,7 +401,7 @@
   --accent: 271 91% 65%;
   --accent-foreground: 271 50% 95%;
   /* Keep destructive red */
-  --destructive: 0 84% 60%;
+  --destructive: 0 100% 50%;
   --destructive-foreground: 0 0% 100%;
 }
 
@@ -434,7 +434,7 @@
   --accent: 271 91% 35%;
   --accent-foreground: 271 50% 96%;
   /* Keep destructive red */
-  --destructive: 0 84% 60%;
+  --destructive: 0 100% 50%;
   --destructive-foreground: 0 0% 100%;
 }
 
