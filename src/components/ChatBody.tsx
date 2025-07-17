@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { MessageSquare, Mail, Lightbulb, Brain, Code, RotateCcw, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/useTheme";
 import { toast } from "sonner";
 
 interface Message {
@@ -32,6 +33,8 @@ interface ChatBodyProps {
 export const ChatBody = forwardRef<HTMLDivElement, ChatBodyProps>(
   ({ conversation, isTyping, onQuickAction, onRetryMessage }, ref) => {
     const messagesEndRef = useRef<HTMLDivElement>(null);
+    const { theme } = useTheme();
+    const logoSrc = `/logo-${theme.color}${theme.variant}.png`;
 
     const scrollToBottom = () => {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -85,11 +88,7 @@ export const ChatBody = forwardRef<HTMLDivElement, ChatBodyProps>(
           // Empty state
           <div className="flex flex-col items-center justify-center h-full text-center space-y-8 max-w-2xl mx-auto">
             <div className="space-y-4">
-              <div className="w-32 h-32 mx-auto">
-                <div className="w-full h-full rounded-full bg-gradient-to-br from-red-500/20 to-red-600/20 border-2 border-red-500/30 flex items-center justify-center">
-                  <MessageSquare className="w-16 h-16 text-red-500" />
-                </div>
-              </div>
+              <img src={logoSrc} alt="Vivica" className="w-32 h-32 mx-auto" />
               <h2 className="text-3xl font-bold">Welcome to Vivica</h2>
               <p className="text-lg text-muted-foreground">
                 Start a new conversation to begin
