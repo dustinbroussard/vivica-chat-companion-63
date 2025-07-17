@@ -1,5 +1,12 @@
 
-import { useState, useEffect, useCallback } from 'react';
+import {
+  useState,
+  useEffect,
+  useCallback,
+  createContext,
+  useContext,
+  ReactNode,
+} from 'react';
 
 export type ThemeVariant = 'dark' | 'light';
 export type ThemeColor = 'default' | 'blue' | 'red' | 'green' | 'purple';
@@ -9,10 +16,18 @@ export interface Theme {
   variant: ThemeVariant;
 }
 
-export const useTheme = () => {
+interface ThemeContextValue {
+  theme: Theme;
+  updateTheme: (theme: Theme) => void;
+  applyTheme: (theme: Theme) => void;
+}
+
+const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
+
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState<Theme>({
     color: 'default',
-    variant: 'dark'
+    variant: 'dark',
   });
 
   const applyTheme = useCallback((newTheme: Theme) => {
@@ -39,7 +54,7 @@ export const useTheme = () => {
     
     // Force a repaint to ensure immediate visual update
     document.documentElement.style.display = 'none';
-    document.documentElement.offsetHeight; // Trigger reflow
+    void document.documentElement.offsetHeight; // Trigger reflow
     document.documentElement.style.display = '';
   }, []);
 
@@ -68,9 +83,17 @@ export const useTheme = () => {
     localStorage.setItem('vivica-theme', JSON.stringify(newTheme));
   }, [applyTheme]);
 
-  return {
-    theme,
-    updateTheme,
-    applyTheme
-  };
+  return (
+    <ThemeContext.Provider value={{ theme, updateTheme, applyTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
 };
