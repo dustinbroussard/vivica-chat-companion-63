@@ -36,6 +36,20 @@ npm i
 npm run dev
 ```
 
+### Troubleshooting module script errors
+
+If you open `index.html` directly or deploy the project without building it, the
+browser may log an error similar to:
+
+```
+Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "application/octet-stream".
+```
+
+This happens because the browser is trying to load the TypeScript entry file
+(`src/main.tsx`) without Vite transpiling it. Run the development server with
+`npm run dev` or build the project using `npm run build` and serve the files
+from the generated `dist` directory to resolve the issue.
+
 **Edit a file directly in GitHub**
 
 - Navigate to the desired file(s).
