@@ -43,8 +43,8 @@
     --text-primary: 0 0% 100%;
     --text-secondary: 0 0% 80%;
     --text-muted: 0 0% 53%;
-    --accent-primary: 271 91% 65%;
-    --accent-secondary: 270 95% 75%;
+    --accent-primary: 0 0% 100%;
+    --accent-secondary: var(--theme-accent);
     --border-custom: 0 0% 20%;
     --border-light: 0 0% 17%;
     --shadow: 0 0% 100% / 0.1;
@@ -72,38 +72,32 @@
 
 /* Color Themes */
 .theme-default {
-  --theme-primary: 271 91% 65%;
-  --theme-accent: 270 95% 75%;
-  --accent-primary: 271 91% 65%;
-  --accent-secondary: 270 95% 75%;
+  --theme-primary: 0 0% 0%;
+  --theme-accent: 0 0% 33%;
+  --accent-secondary: var(--theme-accent);
+  --user-bubble-bg: hsl(var(--bg-primary));
+  --user-bubble-text: hsl(var(--text-primary));
+  --user-bubble-border: 1px solid hsl(var(--accent-primary));
 }
 
 .theme-blue {
-  --theme-primary: 211 100% 50%;
-  --theme-accent: 211 100% 60%;
-  --accent-primary: 211 100% 50%;
-  --accent-secondary: 211 100% 60%;
+  --theme-primary: 217 91% 60%;
+  --theme-accent: 213 94% 68%;
 }
 
 .theme-red {
-  --theme-primary: 0 84% 55%;
-  --theme-accent: 0 100% 68%;
-  --accent-primary: 0 84% 55%;
-  --accent-secondary: 0 100% 68%;
+  --theme-primary: 0 84% 60%;
+  --theme-accent: 0 91% 71%;
 }
 
 .theme-green {
-  --theme-primary: 151 100% 40%;
-  --theme-accent: 151 100% 50%;
-  --accent-primary: 151 100% 40%;
-  --accent-secondary: 151 100% 50%;
+  --theme-primary: 160 84% 39%;
+  --theme-accent: 158 64% 52%;
 }
 
 .theme-purple {
-  --theme-primary: 271 91% 65%;
-  --theme-accent: 270 95% 75%;
-  --accent-primary: 271 91% 65%;
-  --accent-secondary: 270 95% 75%;
+  --theme-primary: 258 90% 66%;
+  --theme-accent: 255 92% 76%;
 }
 
 /* DEFAULT DARK THEME - AMOLED black */
@@ -197,6 +191,8 @@
   --border: 215 72% 36%;
   --input: 221 63% 29%;
   --primary: 211 100% 50%;
+  --accent-primary: 211 100% 50%;
+  --accent-secondary: 210 100% 60%;
   --primary-foreground: 208 100% 97%;
   --secondary: 221 58% 35%;
   --secondary-foreground: 208 100% 97%;
@@ -230,6 +226,8 @@
   --border: 219 48% 65%;
   --input: 214 51% 78%;
   --primary: 211 100% 50%;
+  --accent-primary: 211 100% 50%;
+  --accent-secondary: 209 100% 35%;
   --primary-foreground: 208 100% 97%;
   --secondary: 214 64% 86%;
   --secondary-foreground: 225 100% 5%;
@@ -263,6 +261,8 @@
   --border: 349 100% 31%;
   --input: 350 100% 18%;
   --primary: 350 100% 38%;
+  --accent-primary: 350 100% 38%;
+  --accent-secondary: 356 78% 54%;
   --primary-foreground: 20 43% 99%;
   --secondary: 352 97% 24%;
   --secondary-foreground: 20 43% 99%;
@@ -296,6 +296,8 @@
   --border: 350 17% 66%;
   --input: 0 100% 92%;
   --primary: 350 100% 38%;
+  --accent-primary: 350 100% 38%;
+  --accent-secondary: 349 100% 31%;
   --primary-foreground: 20 43% 99%;
   --secondary: 0 100% 88%;
   --secondary-foreground: 342 100% 3%;
@@ -329,6 +331,8 @@
   --border: 144 100% 25%;
   --input: 144 100% 15%;
   --primary: 150 100% 40%;
+  --accent-primary: 150 100% 40%;
+  --accent-secondary: 150 100% 45%;
   --primary-foreground: 120 100% 95%;
   --secondary: 143 100% 20%;
   --secondary-foreground: 120 100% 95%;
@@ -362,6 +366,8 @@
   --border: 150 50% 60%;
   --input: 120 100% 85%;
   --primary: 150 100% 40%;
+  --accent-primary: 150 100% 40%;
+  --accent-secondary: 150 100% 30%;
   --primary-foreground: 120 100% 95%;
   --secondary: 120 100% 93%;
   --secondary-foreground: 149 100% 6%;
@@ -395,6 +401,8 @@
   --border: 279 100% 35%;
   --input: 280 100% 21%;
   --primary: 282 100% 50%;
+  --accent-primary: 282 100% 50%;
+  --accent-secondary: 285 100% 70%;
   --primary-foreground: 276 100% 95%;
   --secondary: 279 100% 27%;
   --secondary-foreground: 276 100% 95%;
@@ -428,6 +436,8 @@
   --border: 264 100% 75%;
   --input: 263 100% 85%;
   --primary: 282 100% 50%;
+  --accent-primary: 282 100% 50%;
+  --accent-secondary: 283 100% 35%;
   --primary-foreground: 276 100% 95%;
   --secondary: 274 100% 89%;
   --secondary-foreground: 279 100% 8%;
