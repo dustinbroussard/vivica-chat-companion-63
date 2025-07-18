@@ -170,11 +170,11 @@
 
 /* BLUE DARK THEME - Blue monochromatic */
 [data-theme="blue-dark"] {
-  --bg-primary: 225 100% 4%;
-  --bg-secondary: 225 50% 8%;
-  --bg-tertiary: 225 40% 12%;
-  --bg-hover: 225 35% 16%;
-  --bg-active: 225 30% 20%;
+  --bg-primary: 225 100% 5%;
+  --bg-secondary: 223 64% 14%;
+  --bg-tertiary: 221 63% 29%;
+  --bg-hover: 221 58% 35%;
+  --bg-active: 221 52% 41%;
   --text-primary: 210 100% 95%;
   --text-secondary: 210 50% 80%;
   --text-muted: 210 30% 65%;
@@ -203,11 +203,11 @@
 
 /* BLUE LIGHT THEME - Blue monochromatic */
 [data-theme="blue-light"] {
-  --bg-primary: 210 100% 95%;
-  --bg-secondary: 210 50% 88%;
-  --bg-tertiary: 210 40% 80%;
-  --bg-hover: 210 35% 75%;
-  --bg-active: 210 30% 70%;
+  --bg-primary: 208 100% 97%;
+  --bg-secondary: 221 100% 93%;
+  --bg-tertiary: 214 51% 78%;
+  --bg-hover: 214 64% 86%;
+  --bg-active: 217 48% 75%;
   --text-primary: 225 100% 4%;
   --text-secondary: 225 50% 20%;
   --text-muted: 225 30% 35%;
@@ -236,11 +236,11 @@
 
 /* RED DARK THEME - Red monochromatic */
 [data-theme="red-dark"] {
-  --bg-primary: 0 100% 4%;
-  --bg-secondary: 0 50% 8%;
-  --bg-tertiary: 0 40% 12%;
-  --bg-hover: 0 35% 16%;
-  --bg-active: 0 30% 20%;
+  --bg-primary: 342 100% 3%;
+  --bg-secondary: 351 37% 7%;
+  --bg-tertiary: 350 100% 18%;
+  --bg-hover: 352 97% 24%;
+  --bg-active: 349 100% 31%;
   --text-primary: 15 100% 95%;
   --text-secondary: 15 50% 80%;
   --text-muted: 15 30% 65%;
@@ -269,11 +269,11 @@
 
 /* RED LIGHT THEME - Red monochromatic */
 [data-theme="red-light"] {
-  --bg-primary: 15 100% 95%;
-  --bg-secondary: 15 50% 88%;
-  --bg-tertiary: 15 40% 80%;
-  --bg-hover: 15 35% 75%;
-  --bg-active: 15 30% 70%;
+  --bg-primary: 20 43% 99%;
+  --bg-secondary: 0 42% 90%;
+  --bg-tertiary: 0 100% 92%;
+  --bg-hover: 0 100% 88%;
+  --bg-active: 0 100% 83%;
   --text-primary: 0 100% 4%;
   --text-secondary: 0 50% 20%;
   --text-muted: 0 30% 35%;
@@ -302,11 +302,11 @@
 
 /* GREEN DARK THEME - Green monochromatic */
 [data-theme="green-dark"] {
-  --bg-primary: 150 100% 4%;
-  --bg-secondary: 150 50% 8%;
-  --bg-tertiary: 150 40% 12%;
-  --bg-hover: 150 35% 16%;
-  --bg-active: 150 30% 20%;
+  --bg-primary: 149 100% 6%;
+  --bg-secondary: 146 100% 10%;
+  --bg-tertiary: 144 100% 15%;
+  --bg-hover: 143 100% 20%;
+  --bg-active: 144 100% 25%;
   --text-primary: 120 100% 95%;
   --text-secondary: 120 50% 80%;
   --text-muted: 120 30% 65%;
@@ -336,10 +336,10 @@
 /* GREEN LIGHT THEME - Green monochromatic */
 [data-theme="green-light"] {
   --bg-primary: 120 100% 95%;
-  --bg-secondary: 120 50% 88%;
-  --bg-tertiary: 120 40% 80%;
-  --bg-hover: 120 35% 75%;
-  --bg-active: 120 30% 70%;
+  --bg-secondary: 120 100% 90%;
+  --bg-tertiary: 120 100% 85%;
+  --bg-hover: 120 100% 93%;
+  --bg-active: 120 100% 83%;
   --text-primary: 150 100% 4%;
   --text-secondary: 150 50% 20%;
   --text-muted: 150 30% 35%;
@@ -368,11 +368,11 @@
 
 /* PURPLE DARK THEME - Purple monochromatic */
 [data-theme="purple-dark"] {
-  --bg-primary: 280 100% 4%;
-  --bg-secondary: 280 50% 8%;
-  --bg-tertiary: 280 40% 12%;
-  --bg-hover: 280 35% 16%;
-  --bg-active: 280 30% 20%;
+  --bg-primary: 279 100% 8%;
+  --bg-secondary: 279 100% 12%;
+  --bg-tertiary: 280 100% 21%;
+  --bg-hover: 279 100% 27%;
+  --bg-active: 279 100% 35%;
   --text-primary: 270 100% 95%;
   --text-secondary: 270 50% 80%;
   --text-muted: 270 30% 65%;
@@ -401,11 +401,11 @@
 
 /* PURPLE LIGHT THEME - Purple monochromatic */
 [data-theme="purple-light"] {
-  --bg-primary: 270 100% 95%;
-  --bg-secondary: 270 50% 88%;
-  --bg-tertiary: 270 40% 80%;
-  --bg-hover: 270 35% 75%;
-  --bg-active: 270 30% 70%;
+  --bg-primary: 276 100% 95%;
+  --bg-secondary: 272 100% 92%;
+  --bg-tertiary: 263 100% 85%;
+  --bg-hover: 274 100% 89%;
+  --bg-active: 267 100% 80%;
   --text-primary: 280 100% 4%;
   --text-secondary: 280 50% 20%;
   --text-muted: 280 30% 35%;
