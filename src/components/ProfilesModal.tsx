@@ -143,7 +143,7 @@ export const ProfilesModal = ({ isOpen, onClose }: ProfilesModalProps) => {
           <div className="space-y-4 py-4">
             <Button
               onClick={handleCreateProfile}
-              className="w-full bg-red-500 hover:bg-red-600 text-white"
+              className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
             >
               <Plus className="w-4 h-4 mr-2" />
               Create New Profile
@@ -277,7 +277,7 @@ export const ProfilesModal = ({ isOpen, onClose }: ProfilesModalProps) => {
               </Button>
               <Button
                 onClick={handleSaveProfile}
-                className="flex-1 bg-red-500 hover:bg-red-600"
+                className="flex-1 bg-accent hover:bg-accent/90"
                 disabled={!editingProfile?.name.trim()}
               >
                 Save Profile

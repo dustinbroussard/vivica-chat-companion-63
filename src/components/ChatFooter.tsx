@@ -49,8 +49,8 @@ export const ChatFooter = ({ onSendMessage, onVoiceToggle, isVoiceMode }: ChatFo
             size="icon"
             onClick={onVoiceToggle}
             className={`${
-              isVoiceMode 
-                ? 'bg-red-500/20 border-red-500/40 text-red-400 pulse-glow' 
+              isVoiceMode
+                ? 'bg-accent/20 border-accent/40 text-accent-foreground/80 pulse-glow'
                 : 'hover:bg-muted'
             } transition-all duration-200`}
           >
@@ -89,7 +89,7 @@ export const ChatFooter = ({ onSendMessage, onVoiceToggle, isVoiceMode }: ChatFo
             type="submit"
             size="icon"
             disabled={!message.trim() || isVoiceMode}
-            className="bg-red-500 hover:bg-red-600 text-white"
+            className="bg-accent text-accent-foreground hover:bg-accent/90"
           >
             <Send className="w-4 h-4" />
           </Button>

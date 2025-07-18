@@ -60,7 +60,7 @@ export const ProfileSwitcher = ({
           className="bg-card border-border hover:bg-muted/50 text-left justify-between min-w-[180px]"
         >
           <div className="flex items-center gap-2">
-            <User className="w-4 h-4 text-red-500" />
+            <User className="w-4 h-4 text-accent" />
             <span className="truncate">{currentProfile?.name || 'No Profile'}</span>
           </div>
           <ChevronDown className="w-4 h-4 ml-2" />
@@ -76,14 +76,14 @@ export const ProfileSwitcher = ({
             key={profile.id}
             onClick={() => onProfileChange(profile)}
             className={`cursor-pointer ${
-              currentProfile?.id === profile.id ? 'bg-red-500/10 text-red-500' : ''
+              currentProfile?.id === profile.id ? 'bg-accent/10 text-accent' : ''
             }`}
           >
             <div className="flex flex-col gap-1 w-full">
               <div className="flex items-center justify-between">
                 <span className="font-medium">{profile.name}</span>
                 {currentProfile?.id === profile.id && (
-                  <span className="text-xs bg-red-500/20 text-red-500 px-2 py-0.5 rounded">Active</span>
+                  <span className="text-xs bg-accent/20 text-accent px-2 py-0.5 rounded">Active</span>
                 )}
               </div>
               <div className="text-xs text-muted-foreground">

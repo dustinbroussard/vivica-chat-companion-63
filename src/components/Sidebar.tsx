@@ -116,7 +116,7 @@ export const Sidebar = ({
           <div className="p-4 border-b border-border">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white font-bold">
+                <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold">
                   V
                 </div>
                 <span className="font-semibold">Vivica</span>
@@ -133,7 +133,7 @@ export const Sidebar = ({
             
             <Button
               onClick={onNewChat}
-              className="w-full bg-red-500 hover:bg-red-600 text-white"
+              className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
             >
               <Plus className="w-4 h-4 mr-2" />
               New Chat
@@ -164,7 +164,7 @@ export const Sidebar = ({
                     key={conversation.id}
                     className={`group relative p-3 rounded-lg cursor-pointer transition-colors ${
                       currentConversation?.id === conversation.id
-                        ? 'bg-red-500/10 border border-red-500/20'
+                        ? 'bg-accent/10 border border-accent/20'
                         : 'hover:bg-muted/50'
                     }`}
                     onClick={() => onSelectConversation(conversation)}
@@ -272,7 +272,7 @@ export const Sidebar = ({
             </Button>
             <Button
               onClick={handleSaveRename}
-              className="flex-1 bg-red-500 hover:bg-red-600"
+              className="flex-1 bg-accent hover:bg-accent/90"
               disabled={!newTitle.trim()}
             >
               Save
