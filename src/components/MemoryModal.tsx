@@ -168,7 +168,7 @@ export const MemoryModal = ({ isOpen, onClose }: MemoryModalProps) => {
           <DialogTitle className="flex items-center gap-2">
             <Brain className="w-5 h-5" />
             Memory Settings
-            <div className={`ml-auto text-xs px-2 py-1 rounded ${isActive ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'}`}>
+            <div className={`ml-auto text-xs px-2 py-1 rounded ${isActive ? 'bg-green-500/20 text-green-500' : 'bg-accent/20 text-accent'}`}>
               {isActive ? 'Active' : 'Inactive'}
             </div>
           </DialogTitle>
@@ -182,7 +182,7 @@ export const MemoryModal = ({ isOpen, onClose }: MemoryModalProps) => {
               variant={isActive ? "default" : "outline"}
               size="sm"
               onClick={() => setIsActive(!isActive)}
-              className={isActive ? "bg-red-500 hover:bg-red-600" : ""}
+              className={isActive ? "bg-accent hover:bg-accent/90" : ""}
             >
               {isActive ? "Active" : "Inactive"}
             </Button>
@@ -363,7 +363,7 @@ export const MemoryModal = ({ isOpen, onClose }: MemoryModalProps) => {
           <Button variant="outline" onClick={onClose} className="flex-1">
             Cancel
           </Button>
-          <Button onClick={handleSave} className="flex-1 bg-red-500 hover:bg-red-600">
+          <Button onClick={handleSave} className="flex-1 bg-accent hover:bg-accent/90">
             <Save className="w-4 h-4 mr-2" />
             Save Memory
           </Button>

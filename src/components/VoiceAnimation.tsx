@@ -255,9 +255,9 @@ export const VoiceAnimation = ({
       case 'processing':
         return 'text-yellow-300';
       case 'speaking':
-        return 'text-red-300';
+        return 'text-accent/70';
       default:
-        return 'text-red-300';
+        return 'text-accent/70';
     }
   };
 
@@ -303,7 +303,7 @@ export const VoiceAnimation = ({
               {[...Array(5)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-1 bg-red-400 rounded-full animate-pulse"
+                  className="w-1 bg-accent rounded-full animate-pulse"
                   style={{
                     height: `${6 + Math.sin(Date.now() / 300 + i) * 8}px`, // Slower animation
                     animationDelay: `${i * 150}ms`, // Slower delays

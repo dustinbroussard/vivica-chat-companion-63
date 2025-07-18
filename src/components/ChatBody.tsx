@@ -101,9 +101,9 @@ export const ChatBody = forwardRef<HTMLDivElement, ChatBodyProps>(
                   key={action.label}
                   variant="outline"
                   onClick={() => onQuickAction(action.prompt)}
-                  className="h-24 flex flex-col items-center gap-3 bg-card/50 hover:bg-red-500/10 border-red-500/20 hover:border-red-500/40 transition-all duration-200"
+                  className="h-24 flex flex-col items-center gap-3 bg-card/50 hover:bg-accent/10 border-accent/20 hover:border-accent/40 transition-all duration-200"
                 >
-                  <action.icon className="w-6 h-6 text-red-500" />
+                  <action.icon className="w-6 h-6 text-accent" />
                   <span className="text-sm font-medium">{action.label}</span>
                 </Button>
               ))}
@@ -121,12 +121,12 @@ export const ChatBody = forwardRef<HTMLDivElement, ChatBodyProps>(
               >
                 <div className="flex items-start gap-3 max-w-[85%] md:max-w-[70%]">
                   {message.role === 'assistant' && (
-                    <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white text-sm font-semibold flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-sm font-semibold flex-shrink-0">
                       V
                     </div>
                   )}
                   
-                  <div className={`message-bubble ${message.role} ${message.failed ? 'border-red-500/50 bg-red-500/10' : ''}`}>
+                  <div className={`message-bubble ${message.role} ${message.failed ? 'border-accent/50 bg-accent/10' : ''}`}>
                     <div className="prose prose-invert break-words max-w-none">
                       <ReactMarkdown remarkPlugins={[remarkGfm]}>
                         {message.content}
@@ -155,7 +155,7 @@ export const ChatBody = forwardRef<HTMLDivElement, ChatBodyProps>(
                             variant="ghost"
                             size="sm"
                             onClick={() => onRetryMessage(message.id)}
-                            className="h-6 w-6 p-0 text-red-500 hover:text-red-600"
+                            className="h-6 w-6 p-0 text-accent hover:text-accent/90"
                           >
                             <RotateCcw className="w-3 h-3" />
                           </Button>
@@ -177,7 +177,7 @@ export const ChatBody = forwardRef<HTMLDivElement, ChatBodyProps>(
             {isTyping && (
               <div className="flex justify-start slide-up">
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white text-sm font-semibold">
+                  <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-sm font-semibold">
                     V
                   </div>
                   <div className="message-bubble assistant">
