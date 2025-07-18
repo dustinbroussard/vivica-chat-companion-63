@@ -23,7 +23,7 @@ export const ThemeSelector = () => {
   };
 
   const themeOptions = [
-    { value: 'default', label: 'Default', color: '#8b5cf6' },
+    { value: 'default', label: 'Default', color: '#000000' },
     { value: 'blue', label: 'Blue', color: '#3b82f6' },
     { value: 'red', label: 'Red', color: '#ef4444' },
     { value: 'green', label: 'Green', color: '#10b981' },
